@@ -16,5 +16,3 @@ function popupClose() {
 }
 
 popupCloseButton.addEventListener('click', popupClose);
-
-

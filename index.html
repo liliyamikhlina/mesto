@@ -19,7 +19,7 @@
                 <div class="profile__info">
                     <div class="profile__box">
                         <h1 class="profile__name">Жак-Ив Кусто</h1>
-                        <button class="profile__edit-button" tyoe="button"></button>
+                        <button class="profile__edit-button" type="button"></button>
                     </div>
                     <p class="profile__job">Исследователь океана</p>
             </div>
@@ -80,12 +80,12 @@
         <section class="popup">
             <div class="popup__overlay"></div>
             <div class="popup__container">
-                <h2>Редактировать профиль</h2>
+                <h2 class="popup__title">Редактировать профиль</h2>
                     <form class="popup__form" method="get" name="profile-form">
                         <input name="name" class="popup__input" type="text" value="Жак-Ив Кусто" placeholder="Ваше имя">
                         <input name="job" class="popup__input" type="text" value="Исследователь океана" placeholder="О себе">
                     </form>
-                <button class="popup__submit-button" type="button" value="Сохранить"></button>
+                <button name="submit" class="popup__submit-button" type="button">Сохранить</button>
             </div>
             <button class="popup__close-button" type="button"></button>
         </section>

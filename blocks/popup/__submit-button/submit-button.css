@@ -4,7 +4,19 @@
     border: none;
     background-color: #000;
     border-radius: 2px;
-    margin: 48px auto 0;
+    margin: 0 36px;
     padding: 0;
     color: #FFFFFF;
+    font-family: "Inter", "Arial", sans-serif;
+    font-style: normal;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+}
+
+.popup__submit-button:hover {
+    opacity: 0.8;
+    cursor: pointer;
 }
