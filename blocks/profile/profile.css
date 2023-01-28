@@ -6,3 +6,12 @@
     height: 120px;
     margin: 40px auto 51px;
 }
+
+@media (max-width: 880px) {
+    .profile {
+        flex-direction: column;
+        width: 282px;
+        height: 286px;
+        margin: 41px auto 36px;
+    }
+}

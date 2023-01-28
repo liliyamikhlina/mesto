@@ -5,3 +5,11 @@
     height: 74px;
     border-bottom: 1px solid #545454;
 }
+
+@media (max-width: 880px) {
+    .header {
+        margin: 28px auto 0;
+        width: 320px;
+        height: 56px;
+    }
+}

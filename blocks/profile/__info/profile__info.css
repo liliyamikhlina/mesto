@@ -1,4 +1,13 @@
 .profile__info {
-    height: 73px;
     width: 336px;
+    height: 73px;
+    margin: 0;
+    padding: 0;
+}
+
+@media (max-width: 880px) {
+    .profile__info {
+        width: 282px;
+        height: 54px;
+    }
 }

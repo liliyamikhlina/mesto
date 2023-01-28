@@ -1,7 +1,6 @@
 .elements {
     margin: 0 auto 67px;
     width: 880px;
-    height: 774px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(auto-fit, 1fr);
@@ -9,3 +8,13 @@
     row-gap: 20px;
 }
 
+@media (max-width: 880px) {
+    .elements {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 282px;
+        margin-bottom: 48px;
+    }
+}

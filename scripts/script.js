@@ -16,3 +16,18 @@ function popupClose() {
 }
 
 popupCloseButton.addEventListener('click', popupClose);
+
+let formElement =  popup.querySelector('.popup__form');
+let nameInput = popup.querySelector('.popup__input_name');
+let aboutInput = popup.querySelector('.popup__input_job');
+let nameProfile = profile.querySelector('.profile__name');
+let aboutProfile = profile.querySelector('.profile__job');
+
+function handleFormSubmit(evt) {
+    evt.preventDefault();
+    nameProfile.textContent = nameInput.value;
+    aboutProfile.textContent = aboutInput.value;
+    popupClose()
+}
+
+formElement.addEventListener('submit', handleFormSubmit);
