@@ -7,7 +7,4 @@
 Разметка и верстка страницы.  Методология БЭМ.  Grid-layout.  Медиазапросы.  Примитивы.  DOM-дерево. 
 
 ## Технологии
-HTML  
-CSS
-Java Script  
-Git  
+HTML. CSS. Java Script. Git  
