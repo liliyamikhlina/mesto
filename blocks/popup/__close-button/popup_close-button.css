@@ -7,7 +7,10 @@
     border: none;
     outline: none;
     z-index: 2;
-    margin: 0 0 8px 438px;
+    margin: 0;
+    position: absolute;
+    top: -40px;
+    right: -40px;
 }
 
 .popup__close-button:hover {
@@ -19,6 +22,7 @@
     .popup__close-button {
         width: 20px;
         height: 20px;
-        margin: 0 0 16px 282px;
+        top: -36px;
+        right: 0;
     }
 }

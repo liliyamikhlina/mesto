@@ -9,8 +9,6 @@
     border: 2px solid #FFFFFF;
     border-radius: 2px;
     outline: 0;
-    margin: 0;
-    padding: 0;
     position: absolute;
     top: 35px;
     right: 0;
@@ -26,6 +24,7 @@
         background-size: 16px 16px;
         position: static;
         width: 282px;
-        margin-top: 36px;
+        margin: 36px 0 0 0;
+        padding: 0;
     }
 }
