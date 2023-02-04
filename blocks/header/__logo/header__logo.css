@@ -1,5 +1,5 @@
 .header__logo {
-    margin: 45px 0 41px 0;
+    margin: 45px 0 41px;
     padding: 0;
     width: 142px;
     height: 33px;
@@ -10,6 +10,6 @@
     .header__logo {
     width: 103.74px;
     height: 24.4px;
-    margin-left: 27px;
+    margin: 28px 0 31.6px 27px;
     }
 }
