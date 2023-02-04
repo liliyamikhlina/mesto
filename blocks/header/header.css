@@ -8,7 +8,6 @@
 
 @media (max-width: 880px) {
     .header {
-        margin: 0 auto;
         min-width: 320px;
     }
 }

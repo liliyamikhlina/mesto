@@ -8,9 +8,8 @@ let popupCloseButton =  popup.querySelector('.popup__close-button');
 
 function popupOpen() { 
     popup.classList.add('popup_active');
-    nameInput.setAttribute('value', nameProfile.textContent);
-    jobInput.setAttribute('value', aboutProfile.textContent);
-
+    nameInput.value = nameProfile.textContent;
+    jobInput.value = aboutProfile.textContent;
 } 
 
 profileEditButton.addEventListener('click', popupOpen); 
