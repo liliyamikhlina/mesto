@@ -1,8 +1,8 @@
 .profile__info {
     max-width: 336px;
     width: 100%;
-    margin: 0; 
-    padding: 0; 
+    margin: 0;
+    padding: 0;
 }
 
 @media (max-width: 880px) {
