@@ -77,18 +77,31 @@
         <p class="footer__copyright">&COPY; 2023 Mesto Russia</p>
     </footer>
 
-    <div class="popup">
-        <div class="popup__container">
-            <h2 class="popup__title">Редактировать профиль</h2>
-                <form class="popup__form" method="get" name="profile-form">
-                    <input class="popup__input popup__input_type_name" type="text" name="name" placeholder="Ваше имя">
-                    <input class="popup__input popup__input_type_job" type="text" name="job" placeholder="О себе">
-                    <button name="submit" class="popup__submit-button" type="submit">Сохранить</button>
-                </form>
-                <button class="popup__close-button" type="button"></button>
+        <div class="popup"  id="popup-profile">
+            <div class="popup__container">
+                <h2 class="popup__title">Редактировать профиль</h2>
+                    <form class="popup__form" method="get" name="profile-form">
+                        <input class="popup__input popup__input_type_name" type="text" name="name" placeholder="Ваше имя">
+                        <input class="popup__input popup__input_type_job" type="text" name="job" placeholder="О себе">
+                        <button name="submit" class="popup__submit-button" type="submit">Сохранить</button>
+                    </form>
+                    <button class="popup__close-button" type="button"></button>
+            </div>
         </div>
+
+        <div class="popup" id="popup-card">
+            <div class="popup__container">
+                <h2 class="popup__title">Новое Место</h2>
+                    <form class="popup__form" method="get" name="card-form">
+                        <input class="popup__input popup__input_type_place" type="text" name="place" placeholder="Название">
+                        <input class="popup__input popup__input_type_link" type="text" name="link" placeholder="Ссылка на картинку">
+                        <button name="submit" class="popup__submit-button" type="submit">Создать</button>
+                    </form>
+                    <button class="popup__close-button" type="button"></button>
+            </div>
+        </div>
+
     </div>
-</div>
 <script src="./scripts/index.js"></script>
 </body>
 </html>
