@@ -25,7 +25,7 @@
             </div>
             <button class="profile__add-button" type="button"></button>
         </section>
-
+<!--
         <section class="elements" aria-label="Карточки">
             <article class="element">
                 <img class="element__image" src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Карачаевск" >
@@ -70,7 +70,7 @@
                 </div>
             </article>
         </section>
-
+-->
     </main>
 
     <footer class="footer">
@@ -101,7 +101,26 @@
             </div>
         </div>
 
+        <div class="popup" id="popup-photo">
+            <div class="popup__photo-container">
+                 <button class="popup__close-button" type="button"></button>
+                 <img class="popup__image" src="#" alt=".">
+                 <p class="popup__photo-text"></p>
+            </div>
+
     </div>
+    <div class="cards" id="cards">
+        <article class="card">
+            <button class="card__trash" type="button"></button>
+            <img class="card__image" src="#" alt=".">
+            <div class="card__box">
+                <h2 class="card__title">Карточка</h2>
+                <button class="card__like" type="button"></button>
+            </div>
+        </article>
+    </div>
+
+<script src="./scripts/initialCards.js"></script>
 <script src="./scripts/index.js"></script>
 </body>
 </html>
