@@ -30,6 +30,7 @@ const cardFormElement = popupCard.querySelector('.popup__form');
 const popupPhoto = document.querySelector('#popup-photo');
 const popupPhotoCloseButton = popupPhoto.querySelector(popupsCloseButtonsSelector);
 const popupPhotoImg = popupPhoto.querySelector('.popup__image');
+const popupPhotoText = popupPhoto.querySelector('.popup__photo-text');
 
 profileFormElement.addEventListener('submit', handleProfileFormSubmit);
 cardFormElement.addEventListener('submit', handleCardFormSubmit);
@@ -146,6 +147,7 @@ function submitForm() {
 function openPopupPhoto(event) {
     openPopup(popupPhoto);
     popupPhotoImg.src = event.target.src;
+    popupPhotoText.textContent = event.target.alt;
 }
 
 function closePopupPhoto() {
