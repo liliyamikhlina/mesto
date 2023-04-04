@@ -1,7 +1,5 @@
-// MOVE US TO ANOTHER FILE
 const popupsCloseButtonsSelector = '.popup__close-button';
 const popupActiveClass = 'popup_active';
-// TILL HERE
 
 const popupProfile = document.querySelector('#popup-profile');
 const popupContainer = document.querySelector('.popup__container');
@@ -35,11 +33,9 @@ const popupPhotoText = popupPhoto.querySelector('.popup__photo-text');
 profileFormElement.addEventListener('submit', handleProfileFormSubmit);
 cardFormElement.addEventListener('submit', handleCardFormSubmit);
 
-// Popup open events
 profileEditButton.addEventListener('click', popupProfileOpen);
 profileAddButton.addEventListener('click', popupCardOpen);
 
-// Popups close events
 popupCardCloseButton.addEventListener('click', popupCardClose);
 popupProfileCloseButton.addEventListener('click', popupProfileClose);
 popupPhotoCloseButton.addEventListener('click', closePopupPhoto);
@@ -97,7 +93,6 @@ function handleCardFormSubmit(evt) {
 }
 
 
-
 function popupCardOpen() {
     openPopup(popupCard);
 }
@@ -134,7 +129,6 @@ function createCard(name, link) {
 
 function renderCard(data, cardsContainer) {
     const cardElement = createCard(data);
-    // Помещаем ее в контейнер карточек
     cardsContainer.prepend(cardElement);
 }
 
@@ -143,7 +137,6 @@ function submitForm() {
     renderCard();
 } 
 
-// popup photo
 function openPopupPhoto(event) {
     openPopup(popupPhoto);
     popupPhotoImg.src = event.target.src;
