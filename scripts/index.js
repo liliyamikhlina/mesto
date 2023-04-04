@@ -33,81 +33,62 @@ const popupPhotoText = popupPhoto.querySelector('.popup__photo-text');
 profileFormElement.addEventListener('submit', handleProfileFormSubmit);
 cardFormElement.addEventListener('submit', handleCardFormSubmit);
 
-profileEditButton.addEventListener('click', popupProfileOpen);
-profileAddButton.addEventListener('click', popupCardOpen);
+profileEditButton.addEventListener('click', openPopupProfile);
+profileAddButton.addEventListener('click', openPopupCard);
 
-popupCardCloseButton.addEventListener('click', popupCardClose);
-popupProfileCloseButton.addEventListener('click', popupProfileClose);
+popupCardCloseButton.addEventListener('click', closePopupCard);
+popupProfileCloseButton.addEventListener('click', closePopupProfile);
 popupPhotoCloseButton.addEventListener('click', closePopupPhoto);
 
-
-function init() {
-    initialCards.forEach(function (item) {
-        const title = item.name;
-        const link = item.link;
-        const node = createCard(title, link);
-        cardsSection.appendChild(node);
-    });
-}
-
-function popupProfileOpen() {
+function openPopupProfile() {
     openPopup(popupProfile);
     nameInput.value = nameProfile.textContent;
     jobInput.value = aboutProfile.textContent;
 }
 
-
-function popupProfileClose() {
+function closePopupProfile() {
     closePopup(popupProfile)
 }
 
-
 function handleProfileFormSubmit(evt) {
     evt.preventDefault();
-
     const name = nameInput.value;
     const aboutProfile = jobInput.value;
-
     if (!name || !aboutProfile) {
         return;
     }
-
     nameProfile.textContent = name;
     aboutProfile.textContent = aboutProfile;
-
-    popupProfileClose()
+    closePopupProfile();
 }
 
 function handleCardFormSubmit(evt) {
     evt.preventDefault();
     const place = placeInput.value;
     const link = linkInput.value;
-    
     if (!place || !link) {
         return;
     }
-
     const newCard = createCard(place, link);
     cardsSection.insertBefore(newCard, cardsSection.firstChild)
-    popupCardClose();
+    closePopupCard();
+    evt.target.reset();
 }
 
-
-function popupCardOpen() {
+function openPopupCard() {
     openPopup(popupCard);
 }
 
-
-function popupCardClose() {
+function closePopupCard() {
     closePopup(popupCard)
 }
 
-function likeCard(event) {
-    event.target.classList.toggle('card__like_active');
+function likeCard(evt) {
+    evt.target.classList.toggle('card__like_active');
 }   
 
-function deleteCard(event) {
-    event.target.parentNode.remove();
+function deleteCard(evt) {
+    evt.target.parentNode.remove();
 }
 
 function createCard(name, link) {
@@ -116,11 +97,9 @@ function createCard(name, link) {
     const likeButton = newCard.querySelector('.card__like');
     const cardTitle = newCard.querySelector('.card__title');
     const cardTrash = newCard.querySelector('.card__trash');
-
     cardImage.src = link;
     cardImage.alt = name;
     cardTitle.textContent = name;
-
     likeButton.addEventListener('click', likeCard);
     cardTrash.addEventListener('click', deleteCard);
     cardImage.addEventListener('click', openPopupPhoto);
@@ -132,15 +111,16 @@ function renderCard(data, cardsContainer) {
     cardsContainer.prepend(cardElement);
 }
 
-function submitForm() {
+function submitCreateCardForm() {
     evt.preventDefault();
     renderCard();
 } 
 
-function openPopupPhoto(event) {
+function openPopupPhoto(evt) {
     openPopup(popupPhoto);
-    popupPhotoImg.src = event.target.src;
-    popupPhotoText.textContent = event.target.alt;
+    popupPhotoImg.src = evt.target.src;
+    popupPhotoImg.alt = evt.target.alt;
+    popupPhotoText.textContent = evt.target.alt;
 }
 
 function closePopupPhoto() {
@@ -148,11 +128,16 @@ function closePopupPhoto() {
 }
 
 function closePopup(el) {
-    el.classList.remove(popupActiveClass)
+    el.classList.remove(popupActiveClass);
 }
 
 function openPopup(el) {
     el.classList.add(popupActiveClass);
 }
 
-init();
+initialCards.forEach(function (item) {
+    const title = item.name;
+    const link = item.link;
+    const node = createCard(title, link);
+    cardsSection.appendChild(node);
+});
