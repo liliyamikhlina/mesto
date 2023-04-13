@@ -11,16 +11,16 @@ const popupProfileCloseButton = popupProfile.querySelector(popupsCloseButtonsSel
 const profileAddButton = document.querySelector('.profile__add-button');
 const profileFormElement = popupProfile.querySelector('.popup__form');
 
-const nameInput = document.querySelector('.popup__input_type_name');
-const jobInput = document.querySelector('.popup__input_type_job');
+const nameInput = document.querySelector('#input-name');
+const jobInput = document.querySelector('#input-job');
 const nameProfile = document.querySelector('.profile__name');
 const aboutProfile = document.querySelector('.profile__job');
 
 const popupCard = document.querySelector('#popup-card');
 const popupCardCloseButton = popupCard.querySelector(popupsCloseButtonsSelector);
 
-const placeInput = document.querySelector('.popup__input_type_place');
-const linkInput = document.querySelector('.popup__input_type_link');
+const placeInput = document.querySelector('#input-place');
+const linkInput = document.querySelector('#input-link');
 const cardTemplate = document.querySelector('.cards');
 const card = document.querySelector('.cards');
 const cardFormElement = popupCard.querySelector('.popup__form');
@@ -49,7 +49,7 @@ popupsAll.forEach((popupContainer) => {
     });
 });
 
-document.addEventListener('keydown', escapePopup);
+document.addEventListener('click', escapePopup);
 
 function closePopup(el) {
     el.classList.remove(popupActiveClass);
