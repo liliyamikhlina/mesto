@@ -1,8 +1,8 @@
 const classAndSelector = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__save',
-  inactiveButtonClass: 'button_inactive',
+  submitButtonSelector: '.popup__submit-button',
+  inactiveButtonClass: 'popup__submit-button_inactive',
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__input-error_active'
 }
@@ -64,7 +64,9 @@ function hasInvalidInput(inputList) {
 function toggleButtonState (inputList, buttonElement) {
   if (hasInvalidInput(inputList)) {
     buttonElement.classList.add('popup__submit-button_inactive');
+    buttonElement.setAttribute('disabled', '');
   } else {
     buttonElement.classList.remove('popup__submit-button_inactive');
+    buttonElement.removeAttribute('disabled');
   }
 };
