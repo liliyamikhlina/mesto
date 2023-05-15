@@ -1,3 +1,7 @@
+import {initialCards} from './constants.js';
+import Card from './card.js';
+import FormValidator from './FormValidator.js';
+
 const popupsCloseButtonsSelector = '.popup__close-button';
 
 const popupProfile = document.querySelector('#popup-profile');
@@ -99,34 +103,6 @@ function closePopupCard() {
     closePopup(popupCard)
 }
 
-function likeCard(evt) {
-    evt.target.classList.toggle('card__like_active');
-}   
-
-function deleteCard(evt) {
-    evt.target.parentNode.remove();
-}
-
-function createCard(name, link) {
-    const newCard = card.content.cloneNode(true);
-    const cardImage = newCard.querySelector('.card__image');
-    const likeButton = newCard.querySelector('.card__like');
-    const cardTitle = newCard.querySelector('.card__title');
-    const cardTrash = newCard.querySelector('.card__trash');
-    cardImage.src = link;
-    cardImage.alt = name;
-    cardTitle.textContent = name;
-    likeButton.addEventListener('click', likeCard);
-    cardTrash.addEventListener('click', deleteCard);
-    cardImage.addEventListener('click', openPopupPhoto);
-    return newCard;
-};
-
-function renderCard(data, cardsContainer) {
-    const cardElement = createCard(data);
-    cardsContainer.prepend(cardElement);
-}
-
 function openPopupPhoto(evt) {
     openPopup(popupPhoto);
     popupPhotoImg.src = evt.target.src;
@@ -138,12 +114,12 @@ function closePopupPhoto() {
     closePopup(popupPhoto);
 }
 
-initialCards.forEach(function (item) {
-    const title = item.name;
-    const link = item.link;
-    const node = createCard(title, link);
-    cardsSection.appendChild(node);
+initialCards.forEach(item => {
+const card = new Card(item, openPopupPhoto);
+const cardElement = card.generateCard();
+cardsSection.append(cardElement);
 });
+
 
 
 function handleEscape(evt) {
@@ -152,4 +128,3 @@ function handleEscape(evt) {
         closePopup(popupActive);
     }
 }
-
