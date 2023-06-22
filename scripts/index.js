@@ -1,5 +1,5 @@
-import {initialCards} from './constants.js';
-import Card from './card.js';
+import Card from './Card.js';
+import { initialCards, classAndSelector} from './constants.js';
 import FormValidator from './FormValidator.js';
 
 const popupsCloseButtonsSelector = '.popup__close-button';
@@ -47,7 +47,7 @@ popupPhotoCloseButton.addEventListener('click', closePopupPhoto);
 
 allPopups.forEach((popupContainer) => {
     popupContainer.addEventListener('mousedown', function (evt) {
-        if(evt.target !== evt.currentTarget) return;
+        if (evt.target !== evt.currentTarget) return;
         closePopup(evt.target);
     });
 });
@@ -82,13 +82,20 @@ function handleProfileFormSubmit(evt) {
     evt.target.reset();
 }
 
+function  createCard(item) {
+    const card = new Card(item, openPopupPhoto); // Создаем новый экземпляр класса Card
+    const cardElement = card.generateCard();
+    cardsSection.append(cardElement);
+}
+
 function handleCardFormSubmit(evt) {
     evt.preventDefault();
-    const place = placeInput.value;
-    const link = linkInput.value;
-    const newCard = createCard(place, link);
+    const item = {
+        name: placeInput.value, 
+        link: linkInput.value,
+    };
+    createCard(item);
     const button = popupCard.querySelector('.popup__submit-button');
-    cardsSection.insertBefore(newCard, cardsSection.firstChild);
     closePopupCard();
     evt.target.reset();
     button.classList.add('popup__submit-button_inactive');
@@ -115,11 +122,8 @@ function closePopupPhoto() {
 }
 
 initialCards.forEach(item => {
-const card = new Card(item, openPopupPhoto);
-const cardElement = card.generateCard();
-cardsSection.append(cardElement);
+    createCard(item);
 });
-
 
 
 function handleEscape(evt) {
@@ -128,3 +132,9 @@ function handleEscape(evt) {
         closePopup(popupActive);
     }
 }
+
+const  popupProfileFormValidator = new FormValidator(classAndSelector, popupProfile)
+popupProfileFormValidator.enableValidation();
+
+const  popupCardFormValidator = new FormValidator(classAndSelector, popupCard)
+popupCardFormValidator.enableValidation();

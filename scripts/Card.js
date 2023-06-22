@@ -1,9 +1,7 @@
 export default class Card {
     constructor(data, handleCardClick) {
-        const link = data.link;
-        const name = data.name;
-        this._link = link;
-        this._name = name;
+        this._link = data.link;
+        this._name = data.name;
         this._handleCardClick = handleCardClick;
     }
 
@@ -22,31 +20,26 @@ export default class Card {
     }
 
     generateCard() {
-        this._element = this._getTemplate();
-        this._initCardInfo();
-        this._setEventListeners();
-        return this._element;
+        this._element = this._getTemplate(); // Клонируем содержимое элемента .card
+        this._initCardInfo(); // Заполняем свойства экземпляра (класса Card)
+        this._setEventListeners(); // Устанавливем слушатели событий
+        return this._element; // Возвращаем новый элемент
     }
 
     _handleLike = () => {
-        this._likeButton.classList.toggle('card__like_active');
+        this._likeButton.classList.toggle('card__like_active'); // Переключаес класс
     }
 
     _deleteCard  = () => {
-        this._element.remove();
+        this._element.remove(); // Удаляем элемент .card (принадлеж. текущему экземпляру)
     }
 
 
     _setEventListeners() {
-        this._likeButton.addEventListener('click', this._handleLike);
-        this._cardTrash.addEventListener('click', this._deleteCard);
-        this._image.addEventListener('click', this._handleCardClick);
+        this._likeButton.addEventListener('click', this._handleLike); //  При нажатии кнопки лайка переключается класс
+        this._cardTrash.addEventListener('click', this._deleteCard); // При нажатии кнопки trash удаляется элемент .card (принадлеж. текущему экземпляру)
+        this._image.addEventListener('click', this._handleCardClick); // При нажатии на изображение вызываем _handleCardClick
     }
-
-    _createCard() {
-        _setEventListeners();
-        return newCard;
-    };
 
 
 }
