@@ -1,5 +1,5 @@
 import Card from './Card.js';
-import { initialCards, classAndSelector} from './constants.js';
+import { initialCards, validationConfig} from './constants.js';
 import FormValidator from './FormValidator.js';
 
 const popupsCloseButtonsSelector = '.popup__close-button';
@@ -85,7 +85,7 @@ function handleProfileFormSubmit(evt) {
 function  createCard(item) {
     const card = new Card(item, openPopupPhoto); // Создаем новый экземпляр класса Card
     const cardElement = card.generateCard();
-    cardsSection.append(cardElement);
+    cardsSection.prepend(cardElement);
 }
 
 function handleCardFormSubmit(evt) {
@@ -110,18 +110,18 @@ function closePopupCard() {
     closePopup(popupCard)
 }
 
-function openPopupPhoto(evt) {
+function openPopupPhoto(name, link) {
     openPopup(popupPhoto);
-    popupPhotoImg.src = evt.target.src;
-    popupPhotoImg.alt = evt.target.alt;
-    popupPhotoText.textContent = evt.target.alt;
+    popupPhotoImg.alt = name;
+    popupPhotoImg.src = link;
+    popupPhotoText.textContent = name;
 }
 
 function closePopupPhoto() {
     closePopup(popupPhoto);
 }
 
-initialCards.forEach(item => {
+initialCards.reverse().forEach(item => {
     createCard(item);
 });
 
@@ -133,8 +133,8 @@ function handleEscape(evt) {
     }
 }
 
-const  popupProfileFormValidator = new FormValidator(classAndSelector, popupProfile)
+const  popupProfileFormValidator = new FormValidator(validationConfig, popupProfile)
 popupProfileFormValidator.enableValidation();
 
-const  popupCardFormValidator = new FormValidator(classAndSelector, popupCard)
+const  popupCardFormValidator = new FormValidator(validationConfig, popupCard)
 popupCardFormValidator.enableValidation();

@@ -3,6 +3,7 @@ export default class Card {
         this._link = data.link;
         this._name = data.name;
         this._handleCardClick = handleCardClick;
+        this._cardElement = document.querySelector('.cards').content.querySelector('.card');
     }
 
     _initCardInfo() {
@@ -15,8 +16,7 @@ export default class Card {
     }
     
     _getTemplate() {
-        const cardElement = document.querySelector('.cards').content.querySelector('.card').cloneNode(true);
-        return cardElement;
+        return this._cardElement.cloneNode(true);
     }
 
     generateCard() {
@@ -38,8 +38,7 @@ export default class Card {
     _setEventListeners() {
         this._likeButton.addEventListener('click', this._handleLike); //  При нажатии кнопки лайка переключается класс
         this._cardTrash.addEventListener('click', this._deleteCard); // При нажатии кнопки trash удаляется элемент .card (принадлеж. текущему экземпляру)
-        this._image.addEventListener('click', this._handleCardClick); // При нажатии на изображение вызываем _handleCardClick
+        this._image.addEventListener('click', () => this._handleCardClick(this._name, this._link)); 
     }
-
 
 }

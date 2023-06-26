@@ -10,3 +10,7 @@
     border: none;
     outline: none;
 }
+
+.card__trash:hover {
+    cursor: pointer;
+}
