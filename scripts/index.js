@@ -1,8 +1,6 @@
 import Card from './Card.js';
-import { initialCards, validationConfig} from './constants.js';
+import { initialCards, validationConfig, popupsCloseButtonsSelector} from './constants.js';
 import FormValidator from './FormValidator.js';
-
-const popupsCloseButtonsSelector = '.popup__close-button';
 
 const popupProfile = document.querySelector('#popup-profile');
 const popupContainer = document.querySelector('.popup__container');
@@ -33,7 +31,7 @@ const popupPhotoCloseButton = popupPhoto.querySelector(popupsCloseButtonsSelecto
 const popupPhotoImg = popupPhoto.querySelector('.popup__image');
 const popupPhotoText = popupPhoto.querySelector('.popup__photo-text');
 
-const allPopups = Array.from(document.querySelectorAll('.popup'));
+const allPopups = document.querySelectorAll('.popup');
 
 profileFormElement.addEventListener('submit', handleProfileFormSubmit);
 cardFormElement.addEventListener('submit', handleCardFormSubmit);
@@ -73,13 +71,16 @@ function closePopupProfile() {
 }
 
 function handleProfileFormSubmit(evt) {
+    console.log('in handler');
     evt.preventDefault();
     const name = nameInput.value;
     const job = jobInput.value;
     nameProfile.textContent = name;
     aboutProfile.textContent = job;
     closePopupProfile();
+    console.log(evt.target);
     evt.target.reset();
+    popupProfileFormValidator.disableSaveButton();
 }
 
 function  createCard(item) {
@@ -95,11 +96,9 @@ function handleCardFormSubmit(evt) {
         link: linkInput.value,
     };
     createCard(item);
-    const button = popupCard.querySelector('.popup__submit-button');
     closePopupCard();
     evt.target.reset();
-    button.classList.add('popup__submit-button_inactive');
-    button.setAttribute('disabled', '');
+    popupCardFormValidator.toggleButtonState();
 }
 
 function openPopupCard() {
