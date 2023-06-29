@@ -84,7 +84,7 @@ function handleProfileFormSubmit(evt) {
 }
 
 function  createCard(item) {
-    const card = new Card(item, openPopupPhoto); // Создаем новый экземпляр класса Card
+    const card = new Card(item,'.cards', openPopupPhoto); // Создаем новый экземпляр класса Card
     const cardElement = card.generateCard();
     cardsSection.prepend(cardElement);
 }
