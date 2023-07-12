@@ -1,6 +1,6 @@
-import "./styles/index.css"; 
+import '../pages/index.css';
 import Card from './Card.js';
-import { initialCards, validationConfig, popupsCloseButtonsSelector} from './constants.js';
+import { initialCards, validationConfig, popupsCloseButtonsSelector} from '../utils/constants.js';
 import FormValidator from './FormValidator.js';
 
 const popupProfile = document.querySelector('#popup-profile');
