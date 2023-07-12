@@ -1,3 +1,4 @@
+import "./styles/index.css"; 
 import Card from './Card.js';
 import { initialCards, validationConfig, popupsCloseButtonsSelector} from './constants.js';
 import FormValidator from './FormValidator.js';
