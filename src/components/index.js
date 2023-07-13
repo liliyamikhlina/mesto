@@ -1,7 +1,9 @@
 import '../pages/index.css';
 import Card from './Card.js';
-import { initialCards, validationConfig, popupsCloseButtonsSelector} from '../utils/constants.js';
+import { initialCards, validationConfig, popupsCloseButtonsSelector } from '../utils/constants.js';
+import Section from './Section';
 import FormValidator from './FormValidator.js';
+import PopupWithImage from './PopupWithImage';
 
 const popupProfile = document.querySelector('#popup-profile');
 const popupContainer = document.querySelector('.popup__container');
@@ -27,11 +29,6 @@ const cardTemplate = document.querySelector('.cards');
 const card = document.querySelector('.cards');
 const cardFormElement = document.forms["card-form"];
 
-const popupPhoto = document.querySelector('#popup-photo');
-const popupPhotoCloseButton = popupPhoto.querySelector(popupsCloseButtonsSelector);
-const popupPhotoImg = popupPhoto.querySelector('.popup__image');
-const popupPhotoText = popupPhoto.querySelector('.popup__photo-text');
-
 const allPopups = document.querySelectorAll('.popup');
 
 profileFormElement.addEventListener('submit', handleProfileFormSubmit);
@@ -42,7 +39,6 @@ profileAddButton.addEventListener('click', openPopupCard);
 
 popupCardCloseButton.addEventListener('click', closePopupCard);
 popupProfileCloseButton.addEventListener('click', closePopupProfile);
-popupPhotoCloseButton.addEventListener('click', closePopupPhoto);
 
 allPopups.forEach((popupContainer) => {
     popupContainer.addEventListener('mousedown', function (evt) {
@@ -84,8 +80,8 @@ function handleProfileFormSubmit(evt) {
     popupProfileFormValidator.disableSaveButton();
 }
 
-function  createCard(item) {
-    const card = new Card(item,'.cards', openPopupPhoto); // Создаем новый экземпляр класса Card
+function createCard(item) {
+    const card = new Card(item, '.cards', openPopupPhoto); // Создаем новый экземпляр класса Card
     const cardElement = card.generateCard();
     cardsSection.prepend(cardElement);
 }
@@ -93,7 +89,7 @@ function  createCard(item) {
 function handleCardFormSubmit(evt) {
     evt.preventDefault();
     const item = {
-        name: placeInput.value, 
+        name: placeInput.value,
         link: linkInput.value,
     };
     createCard(item);
@@ -111,20 +107,8 @@ function closePopupCard() {
 }
 
 function openPopupPhoto(name, link) {
-    openPopup(popupPhoto);
-    popupPhotoImg.alt = name;
-    popupPhotoImg.src = link;
-    popupPhotoText.textContent = name;
+    popupWithPhoto.open(name, link);
 }
-
-function closePopupPhoto() {
-    closePopup(popupPhoto);
-}
-
-initialCards.reverse().forEach(item => {
-    createCard(item);
-});
-
 
 function handleEscape(evt) {
     if (evt.key === 'Escape') {
@@ -133,8 +117,21 @@ function handleEscape(evt) {
     }
 }
 
-const  popupProfileFormValidator = new FormValidator(validationConfig, popupProfile)
+const popupProfileFormValidator = new FormValidator(validationConfig, popupProfile)
 popupProfileFormValidator.enableValidation();
 
-const  popupCardFormValidator = new FormValidator(validationConfig, popupCard)
+const popupCardFormValidator = new FormValidator(validationConfig, popupCard)
 popupCardFormValidator.enableValidation();
+
+const section = new Section({
+    items: initialCards, renderer: (item) => {
+        const cardElement = createCard(item);
+        section.addItem(cardElement);
+    }
+}, '.elements');
+
+section.render();
+
+const popupWithPhoto = new PopupWithImage('.popup__photo-container');
+popupWithPhoto.setEventListeners();
+
