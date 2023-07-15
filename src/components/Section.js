@@ -2,6 +2,7 @@ export default class Section {
     constructor({ items, renderer }, selector) {
         this._items = items;
         this._renderer = renderer;
+        this._selector = selector;
         this._container = document.querySelector(this._selector);
     }
     render() {
@@ -9,8 +10,6 @@ export default class Section {
     };
 
     addItem(el) {
-        this._container.append(el);
+        this._container.prepend(el);
     }
 }
-
-
