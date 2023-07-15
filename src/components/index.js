@@ -12,7 +12,6 @@ const cardsSection = document.querySelector('.elements');
 
 const profileEditButton = document.querySelector('.profile__edit-button');
 const profileAddButton = document.querySelector('.profile__add-button');
-const profileFormElement = document.forms['profile-form'];
 
 const nameInput = document.querySelector('#input-name');
 const jobInput = document.querySelector('#input-job');
@@ -21,8 +20,6 @@ const linkInput = document.querySelector('#input-link');
 
 
 const popupCard = document.querySelector('#popup-card');
-
-const cardFormElement = document.forms['card-form'];
 
 profileEditButton.addEventListener('click', openPopupProfile);
 profileAddButton.addEventListener('click', openPopupCard);
@@ -38,7 +35,7 @@ function openPopupProfile() {
 
 function openPopupCard() {
     popupWithCard.open();
-}4
+}
 
 function openPopupPhoto(name, link) {
     popupWithPhoto.open(name, link);
