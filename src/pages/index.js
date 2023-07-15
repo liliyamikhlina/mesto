@@ -8,15 +8,12 @@ import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
 
 const popupProfile = document.querySelector('#popup-profile');
-const cardsSection = document.querySelector('.elements');
 
 const profileEditButton = document.querySelector('.profile__edit-button');
 const profileAddButton = document.querySelector('.profile__add-button');
 
 const nameInput = document.querySelector('#input-name');
 const jobInput = document.querySelector('#input-job');
-const placeInput = document.querySelector('#input-place'); 
-const linkInput = document.querySelector('#input-link'); 
 
 
 const popupCard = document.querySelector('#popup-card');
