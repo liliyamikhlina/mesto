@@ -9,37 +9,34 @@ export default class FormValidator {
   }
 
   _showInputError(inputElement, errorMessage) {
-    const errorElement = this._form.querySelector(`.${inputElement.id}-error`); //Ищем элемент ошибки по id инпута
-    inputElement.classList.add(this._inputErrorClass); //Добавляем инпуту класс ошибки
-    errorElement.textContent = errorMessage; //Делаем текстовое содержание элемента ошибки сообщением об ошибке
-    errorElement.classList.add(this._errorClass); //Добовляем элементу ошибки класс ошибки
+    const errorElement = this._form.querySelector(`.${inputElement.id}-error`);
+    inputElement.classList.add(this._inputErrorClass);
+    errorElement.textContent = errorMessage;
+    errorElement.classList.add(this._errorClass);
   };
 
   _hideInputError(inputElement) {
-    const errorElement = this._form.querySelector(`.${inputElement.id}-error`); // Ищем элемент ошибки по id инпута
-    inputElement.classList.remove(this._inputErrorClass); //Убираем у инпута класс ошибки
-    errorElement.classList.remove(this._errorClass); //Убираем у элемента ошибки класс ошибки
-    errorElement.textContent = ' '; //Убираем текст ошибки
+    const errorElement = this._form.querySelector(`.${inputElement.id}-error`);
+    inputElement.classList.remove(this._inputErrorClass);
+    errorElement.classList.remove(this._errorClass);
+    errorElement.textContent = ' ';
   };
 
   _isValid(inputElement) {
-    if (!inputElement.validity.valid) { // Если данные в инпуте не отвечают условиям валидации 
-      this._showInputError(inputElement, inputElement.validationMessage); // Показываем сообщение об ошибке
+    if (!inputElement.validity.valid) {
+      this._showInputError(inputElement, inputElement.validationMessage);
     } else {
-      this._hideInputError(inputElement); // В ином случае прячем сообщение об ошибке 
+      this._hideInputError(inputElement);
     }
   };
 
   _setEventListeners() {
-    this._form.addEventListener('submit', (evt) => { //Убираем для сабмита формы дефолтное поведение
-      evt.preventDefault();
-    });
-    this._inputList = Array.from(this._form.querySelectorAll(this._inputSelector)); //Делаем массив из массивопод. объекта инпутов (для метода some)
-    this._buttonElement = this._form.querySelector(this._submitButtonSelector); // Ищем кнопку сабмита через селектор
-    this.toggleButtonState(); // Добавляем переключение состояния кнопки сабмита
+    this._inputList = Array.from(this._form.querySelectorAll(this._inputSelector));
+    this._buttonElement = this._form.querySelector(this._submitButtonSelector);
+    this.toggleButtonState();
 
-    this._inputList.forEach((inputElement) => { // Проходимся по инпутам в массиве 
-      inputElement.addEventListener('input', () => { //Добавляем каждому проверку на валидность и переключение состояния кнопки
+    this._inputList.forEach((inputElement) => {
+      inputElement.addEventListener('input', () => {
         this._isValid(inputElement);
         this.toggleButtonState();
       });
@@ -47,26 +44,26 @@ export default class FormValidator {
   };
 
   enableValidation() {
-    this._setEventListeners(); //Добавляем слушатели событий
+    this._setEventListeners();
   }
 
   _hasInvalidInput() {
-    return this._inputList.some((inputElement) => { //Проверяем массив инпутов на соответствие правилам валидации
-      return !inputElement.validity.valid; //Показывает, есть ли невалидный элемент инпута
+    return this._inputList.some((inputElement) => {
+      return !inputElement.validity.valid;
     })
   };
 
   disableSaveButton() {
-    this._buttonElement.classList.add(this._inactiveButtonClass); //Добавляем кнопке класс неактивной
-    this._buttonElement.setAttribute('disabled', ''); // Добавляем кнопке атрибут выключенной
+    this._buttonElement.classList.add(this._inactiveButtonClass);
+    this._buttonElement.disabled = true;
   }
 
   toggleButtonState() {
-    if (this._hasInvalidInput()) { //Если есть невалидный инпут 
+    if (this._hasInvalidInput()) {
       this.disableSaveButton();
-    } else { //В ином случае 
-      this._buttonElement.classList.remove(this._inactiveButtonClass); //Убираем кнопке класс неактивной (делаем активной)
-      this._buttonElement.removeAttribute('disabled'); //Убираем атрибут выключенной (включаем)
+    } else {
+      this._buttonElement.classList.remove(this._inactiveButtonClass);
+      this._buttonElement.disabled = false;
     }
   };
 }
