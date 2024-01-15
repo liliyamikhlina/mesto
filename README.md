@@ -21,4 +21,4 @@
 * Webpack
 
 
-[Ссылка на проект](https://liliyamikhlina.github.io/mesto/)
+[Link to see the project](https://liliyamikhlina.github.io/mesto/)
